@@ -14,8 +14,8 @@ type Props = OwnProps
 const Orders: React.FC<Props> = ({coffeeOrders, currentCoffee}) => {
     return (
         <div>
-            <div className="menu">
-                <div className="menu-title">
+            <div className="orders">
+                <div className="orders-title">
                     Orders
                 </div>
                 <ul>

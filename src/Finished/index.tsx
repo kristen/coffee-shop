@@ -12,8 +12,8 @@ type Props = OwnProps;
 
 const Finished: React.FC<Props> = ({completedOrders}) => {
     return (
-        <div className="menu">
-            <div className="menu-title">
+        <div className="orders">
+            <div className="orders-title">
                 Finished
             </div>
             <ul>

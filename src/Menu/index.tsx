@@ -5,6 +5,7 @@ import {Dispatch} from "redux";
 import * as actions from "../CoffeeShop/actions";
 import {CoffeeShopActions} from "../CoffeeShop/actions";
 import {MenuItems} from "../CoffeeShop/reducers";
+import "./index.css";
 
 interface OwnProps {
     menu: MenuItems;

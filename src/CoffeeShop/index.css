@@ -2,11 +2,11 @@
     float: left;
     margin: 0 10px;
 }
-.menu {
+.menu, .orders {
     border: 1px solid;
     width: 200px;
 }
-.menu-title {
+.menu-title, .orders-title {
     text-align: center;
     font-size: 18px;
     padding: 10px;

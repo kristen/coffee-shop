@@ -1,0 +1,8 @@
+.menu .item {
+    border-top: 1px solid;
+    padding: 10px;
+    cursor: pointer;
+}
+.menu .item:hover {
+    background-color: lightyellow;
+}
