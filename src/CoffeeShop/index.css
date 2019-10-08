@@ -27,3 +27,6 @@ ul {
     font-style: italic;
     color: grey;
 }
+.clear {
+    clear: left;
+}

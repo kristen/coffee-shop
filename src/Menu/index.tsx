@@ -14,6 +14,10 @@ interface OwnProps {
 type Props = OwnProps & ReturnType<typeof mapDispatchToProps>;
 
 const Menu: React.FC<Props> = ({menu, orderCoffee}) => {
+    const handleOrderCoffee = (coffee: string) => {
+        const timeLeft = menu[coffee];
+        orderCoffee(coffee, timeLeft);
+    };
     return (
         <div className="menu">
             <div className="menu-title">
@@ -23,7 +27,7 @@ const Menu: React.FC<Props> = ({menu, orderCoffee}) => {
                 {Object.keys(menu).map(coffee =>
                     <li className="item"
                         key={coffee}
-                        onClick={() => orderCoffee(coffee)}>
+                        onClick={() => handleOrderCoffee(coffee)}>
                         {coffee}
                     </li>)
                 }
@@ -37,7 +41,7 @@ const mapStateToProps = (state: RootState) => ({
 });
 
 const mapDispatchToProps = (dispatch: Dispatch<CoffeeShopActions>) => ({
-    orderCoffee: (coffee: string) => dispatch(actions.orderCoffee(coffee))
+    orderCoffee: (coffee: string, timeLeft: number) => dispatch(actions.orderCoffee(coffee, timeLeft))
 });
 
 export default connect(

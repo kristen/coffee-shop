@@ -18,9 +18,9 @@ const Orders: React.FC<Props> = ({orders}) => {
                 Orders
             </div>
             <ul>
-                {orders.map(({type}, index) =>
+                {orders.map(({type, timeLeft}, index) =>
                     <li className="item" key={index}>
-                        {type}
+                        {type}: {timeLeft}
                     </li>
                 )}
                 {orders.length ? '' : <div className="empty-orders">No orders</div>}
