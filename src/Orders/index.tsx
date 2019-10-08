@@ -24,15 +24,14 @@ const Orders: React.FC<Props> = ({coffeeOrders, currentCoffee}) => {
                             {type}: {timeLeft}
                         </li>
                     )}
-                    {coffeeOrders.length ? '' : <div className="empty-orders">No orders</div>}
+                    {coffeeOrders.length ? '' : <div className="empty-orders">Waiting for orders...</div>}
                 </ul>
             </div>
             {currentCoffee ?
                 <div className="current-order">
                     <div>Currently making: {currentCoffee.type}</div>
                     <div>time left: {currentCoffee.timeLeft}</div>
-                </div> :
-                <div className="current-order">Waiting for orders</div>}
+                </div> : ''}
         </div>
     )
 };
