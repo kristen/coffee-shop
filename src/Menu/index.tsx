@@ -1,7 +1,6 @@
 import React from 'react';
 import {connect} from "react-redux";
 import {RootState} from "../reducers";
-import {getOrders} from "../CoffeeShop/selectors";
 import {Dispatch} from "redux";
 import * as actions from "../CoffeeShop/actions";
 import {CoffeeShopActions} from "../CoffeeShop/actions";
@@ -37,7 +36,6 @@ const Menu: React.FC<Props> = ({menu, orderCoffee}) => {
 };
 
 const mapStateToProps = (state: RootState) => ({
-    orders: getOrders(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch<CoffeeShopActions>) => ({

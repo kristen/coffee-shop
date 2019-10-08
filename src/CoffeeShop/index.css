@@ -20,6 +20,9 @@ ul {
     padding-left: 0;
     margin: 0;
 }
+.current-order {
+    padding: 10px;
+}
 .empty-orders {
     border-top: 1px solid black;
     text-align: center;

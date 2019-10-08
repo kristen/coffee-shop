@@ -1,9 +1,11 @@
 import {RootState} from "../reducers";
 import {createSelector} from "reselect";
-import {CoffeeShopState} from "./reducers";
+import {CoffeeShopState, Orders} from "./reducers";
 
 const getCoffeeShop = (state: RootState) => state.coffeeShop;
-export const getOrders = createSelector(getCoffeeShop, (coffeeShop: CoffeeShopState) => coffeeShop.orders);
+const getOrders = createSelector(getCoffeeShop, (coffeeShop: CoffeeShopState) => coffeeShop.orders);
+export const getCoffeeOrders = createSelector(getOrders, (orders: Orders) => orders.coffeeOrders);
+export const getCurrentCoffee = createSelector(getOrders, (orders: Orders) => orders.currentCoffee);
+export const getCompletedOrders = createSelector(getOrders, (orders: Orders) => orders.completedOrders);
 export const getMenu = createSelector(getCoffeeShop, (coffeeShop: CoffeeShopState) => coffeeShop.menu);
-export const getCompletedOrders = createSelector(getCoffeeShop, (coffeeShop: CoffeeShopState) => coffeeShop.completedOrders);
 export const getCurrentTime = createSelector(getCoffeeShop, (coffeeShop: CoffeeShopState) => coffeeShop.currentTime);

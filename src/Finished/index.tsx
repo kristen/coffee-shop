@@ -22,7 +22,10 @@ const Finished: React.FC<Props> = ({completedOrders}) => {
                         {type}: Ready for pickup
                     </li>
                 )}
-                {completedOrders.length ? '' : <div className="empty-orders">No completed orders</div>}
+                {completedOrders.length ? '' :
+                    <div className="empty-orders">
+                        No completed orders
+                    </div>}
             </ul>
         </div>
     )
