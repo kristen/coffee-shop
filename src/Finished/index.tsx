@@ -17,9 +17,9 @@ const Finished: React.FC<Props> = ({completedOrders}) => {
                 Finished
             </div>
             <ul>
-                {completedOrders.map(({type}, index) =>
+                {completedOrders.map(({type, timeLeft}, index) =>
                     <li className="item" key={index}>
-                        {type}: Ready for pickup
+                        {type}: Ready for pickup ({3+timeLeft})
                     </li>
                 )}
                 {completedOrders.length ? '' :
