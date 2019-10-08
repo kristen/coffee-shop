@@ -6,6 +6,8 @@ import {MenuItems} from "./reducers";
 import {connect} from "react-redux";
 import {RootState} from "../reducers";
 import {getMenu} from "./selectors";
+import Finished from "../Finished";
+import Clock from '../Clock';
 
 interface Props {
     menu: MenuItems;
@@ -22,6 +24,12 @@ const CoffeeShop: React.FC<Props> = ({menu}) => {
                 <div className="board">
                     <Orders />
                 </div>
+                <div className="board">
+                    <Finished />
+                </div>
+            </div>
+            <div className="clear">
+                <Clock />
             </div>
         </div>
     )
