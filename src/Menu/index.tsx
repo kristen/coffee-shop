@@ -1,11 +1,11 @@
 import React from 'react';
-import {MenuItems} from "../CoffeeShop";
 import {connect} from "react-redux";
 import {RootState} from "../reducers";
 import {getOrders} from "../CoffeeShop/selectors";
 import {Dispatch} from "redux";
 import * as actions from "../CoffeeShop/actions";
 import {CoffeeShopActions} from "../CoffeeShop/actions";
+import {MenuItems} from "../CoffeeShop/reducers";
 
 interface OwnProps {
     menu: MenuItems;

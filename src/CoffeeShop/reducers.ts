@@ -3,8 +3,13 @@ import {getType} from "typesafe-actions";
 import * as actions from './actions';
 import {combineReducers} from "redux";
 
+export interface MenuItems {
+    [coffee: string]: number
+}
+
 export interface CoffeeShopState {
     orders: CoffeeOrder[];
+    menu: MenuItems;
 }
 
 export interface CoffeeOrder {
@@ -21,6 +26,19 @@ export const orders = (state: CoffeeOrder[] = [], action: CoffeeShopActions) => 
     }
 };
 
+const initialState = {
+    mocha: 5,
+    chai: 4,
+    cappuccino: 3,
+    americano: 2,
+    espresso: 1,
+};
+
+export const menu = (state: MenuItems = initialState, action: CoffeeShopActions) => {
+    return state;
+};
+
 export default combineReducers({
     orders,
+    menu,
 });

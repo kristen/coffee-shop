@@ -2,10 +2,10 @@ import React from 'react';
 import Menu from "../Menu";
 import Orders from "../Orders";
 import './index.css';
-
-export interface MenuItems {
-    [coffee: string]: number
-}
+import {MenuItems} from "./reducers";
+import {connect} from "react-redux";
+import {RootState} from "../reducers";
+import {getMenu} from "./selectors";
 
 interface Props {
     menu: MenuItems;
@@ -27,4 +27,11 @@ const CoffeeShop: React.FC<Props> = ({menu}) => {
     )
 };
 
-export default CoffeeShop;
+
+const mapStateToProps = (state: RootState) => ({
+    menu: getMenu(state),
+});
+
+export default connect(
+    mapStateToProps
+)(CoffeeShop);
