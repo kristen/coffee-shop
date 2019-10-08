@@ -35,28 +35,32 @@ export const orders = (state: Orders = initialState, action: CoffeeShopActions):
         case getType(actions.orderCoffee):
             const {coffee, timeLeft} = action.payload;
             const updatedOrders = [...state.coffeeOrders, {type: coffee, timeLeft}];
-            console.log('current state', state);
-            console.log('updatedOrders', updatedOrders);
-            const newState = {...state, ...{coffeeOrders: updatedOrders}};
-            console.log('newState', newState);
-            return newState;
+            return {...state, ...{coffeeOrders: updatedOrders}};
         case getType(actions.tick):
+            const updatedCompletedOrders = state.completedOrders.map(order => {
+                return {
+                    ...order,
+                    timeLeft: order.timeLeft-1, // decrement time when finished and filter out ones that are -3 seconds
+                }
+            }).filter(order => order.timeLeft > -3);
             if (state.currentCoffee && state.currentCoffee.timeLeft) {
                 const updatedCoffee = {...state.currentCoffee, timeLeft: state.currentCoffee.timeLeft-1};
-                return {...state, ...{currentCoffee: updatedCoffee}};
+                return {...state, ...{currentCoffee: updatedCoffee, completedOrders: updatedCompletedOrders}};
             } else {
-                // finish making coffee, add to finish and start next coffee
+                // start next coffee since timeLeft is 0 or there is no current coffee
                 const newCoffeeOrder = state.coffeeOrders[0];
                 const updatedCoffeeOrders = state.coffeeOrders.slice(1, state.coffeeOrders.length);
                 if (state.currentCoffee) {
+                    // if there was a current coffee that was finished, add it to completed orders
                     return {...state, ...{
                             currentCoffee: newCoffeeOrder,
-                            completedOrders: [...state.completedOrders, state.currentCoffee],
+                            completedOrders: [...updatedCompletedOrders, state.currentCoffee],
                             coffeeOrders: updatedCoffeeOrders,
                         }};
                 } else {
                     return {...state, ...{
                             currentCoffee: newCoffeeOrder,
+                            completedOrders: updatedCompletedOrders,
                             coffeeOrders: updatedCoffeeOrders,
                         }};
                 }
